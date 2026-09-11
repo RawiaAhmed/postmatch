@@ -18,6 +18,11 @@ next-env.d.ts
 # labels.ts (short quotes + labels) is committed; CI gets the texts separately.
 evals/golden/raw/
 
+# Build and debug output
+/build
+npm-debug.log*
+*.pem
+
 # OS and editors
 .DS_Store
 .vscode/*
