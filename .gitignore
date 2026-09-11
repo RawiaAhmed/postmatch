@@ -1,0 +1,31 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets. Never commit an API key; the app is bring-your-own-key.
+.env
+.env.*
+!.env.example
+
+# Golden set source texts stay local:
+# - manifest.json carries private job-search tracker notes
+# - posting texts are third-party content, not ours to republish
+# labels.ts (short quotes + labels) is committed; CI gets the texts separately.
+evals/golden/raw/
+
+# OS and editors
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Vercel
+.vercel
+
+# Local agent scratch
+.claude/
