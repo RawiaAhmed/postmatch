@@ -4,24 +4,11 @@
  * Every field is labelled from the posting TEXT alone, because that is all the
  * model will see. Where a board's card or the tracker says more than the text
  * (e.g. "Berlin, hybrid" on LinkedIn metadata), the label stays 'unspecified'.
+ *
+ * The enums come from lib/schema.ts, so a label can never use a value the model
+ * is not allowed to produce.
  */
-
-export type Seniority = 'mid' | 'senior' | 'lead' | 'staff' | 'principal' | 'manager' | 'unspecified';
-
-export type RemotePolicy =
-  | 'onsite'
-  | 'hybrid'
-  | 'remote' //            no location restriction stated
-  | 'remote-restricted' // remote, but only from named countries or regions
-  | 'unspecified';
-
-export type SponsorshipStated = 'yes' | 'no' | 'not-mentioned';
-
-/**
- * Can someone in Egypt, with no EU/UK work rights, be hired on this posting as written?
- * 'ask' = the posting is silent, so eligibility can only be settled by asking the employer.
- */
-export type Eligible = 'yes' | 'no' | 'ask';
+import type { Eligible, RemotePolicy, Seniority, SponsorshipStated } from '../../lib/schema';
 
 export interface GoldenLabel {
   file: string;
@@ -36,6 +23,10 @@ export interface GoldenLabel {
   relocationStated: boolean;
   /** A required language other than English, or null. */
   languageRequirement: string | null;
+  /**
+   * Can someone in Egypt, with no EU/UK work rights, be hired on this posting as written?
+   * 'ask' = the posting is silent, so eligibility can only be settled by asking the employer.
+   */
   eligible: Eligible;
   /** The mistake this posting is in the set to catch, if any. */
   trap?: string;

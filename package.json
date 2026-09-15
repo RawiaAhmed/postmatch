@@ -9,20 +9,29 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "golden:collect": "tsx scripts/collect-golden.ts",
-    "golden:verify": "tsx scripts/verify-labels.ts"
+    "golden:verify": "tsx scripts/verify-labels.ts",
+    "schema:check": "tsx scripts/check-schema.ts"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.117",
+    "@ai-sdk/react": "^3.0.283",
+    "ai": "^6.0.280",
     "next": "16.3.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zod": "^4.6.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/html-to-text": "^9.0.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "csv-parse": "^7.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "html-entities": "^2.6.0",
+    "html-to-text": "^9.0.5",
     "tailwindcss": "^4",
     "tsx": "^4.23.13",
     "typescript": "^5"

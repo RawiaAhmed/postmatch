@@ -1,23 +1,56 @@
 /**
- * Weekend 0, step 1: pull posting texts for tracker rows while the URLs still resolve.
+ * Saves the text of every job posting in the tracker, so the golden set
+ * survives after the original links expire.
  *
- * Reads the job search tracker, fetches each posting through the most reliable
- * source for its host (ATS APIs first, plain HTML last), and writes one text file
- * per posting plus a manifest carrying the tracker's status and notes for labelling.
+ * For each tracker row it fetches the posting (from the job board's API when
+ * there is one, otherwise the page itself) and writes:
+ *   evals/golden/raw/<company>_<role>.txt   one file per posting
+ *   evals/golden/raw/manifest.json          what happened to every row
  *
- * Run: npx tsx scripts/collect-golden.ts
+ * Run from the project root: npm run golden:collect
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+import { parse } from 'csv-parse/sync';
+import { decode } from 'html-entities';
+import { convert, type HtmlToTextOptions } from 'html-to-text';
 
-const TRACKER = join(homedir(), 'Desktop/Jobs/job_search_tracker.csv');
-const OUT = join(dirname(fileURLToPath(import.meta.url)), '../evals/golden/raw');
-const HEADERS = { 'User-Agent': 'Mozilla/5.0 (Macintosh) postmatch-golden/0.1' };
-const MIN_CHARS = 800; // below this it is a login wall or an expired stub, not a posting
+const TRACKER_PATH = join(homedir(), 'Desktop/Jobs/job_search_tracker.csv');
+const OUTPUT_DIR = join(process.cwd(), 'evals/golden/raw');
 
-type TrackerRow = Record<string, string>;
+// Anything shorter than this is a login wall or an expired page, not a posting.
+const MIN_POSTING_LENGTH = 800;
+
+const REQUEST_HEADERS = { 'User-Agent': 'Mozilla/5.0 (Macintosh) postmatch-golden/0.1' };
+
+// Plain text as close to the posting's own wording as possible: no line
+// wrapping, no link URLs, no images, and headings left in their original case.
+const TEXT_OPTIONS: HtmlToTextOptions = {
+  wordwrap: false,
+  selectors: [
+    { selector: 'script', format: 'skip' },
+    { selector: 'style', format: 'skip' },
+    { selector: 'img', format: 'skip' },
+    { selector: 'a', options: { ignoreHref: true } },
+    { selector: 'h1', options: { uppercase: false } },
+    { selector: 'h2', options: { uppercase: false } },
+    { selector: 'h3', options: { uppercase: false } },
+    { selector: 'h4', options: { uppercase: false } },
+    { selector: 'h5', options: { uppercase: false } },
+    { selector: 'h6', options: { uppercase: false } },
+    { selector: 'table', options: { uppercaseHeaderCells: false } },
+  ],
+};
+
+interface TrackerRow {
+  company: string;
+  role: string;
+  location: string;
+  status: string;
+  notes: string;
+  source_url: string;
+}
 
 interface ManifestEntry {
   company: string;
@@ -28,185 +61,143 @@ interface ManifestEntry {
   url: string;
   file: string | null;
   result: string;
-  chars?: number;
 }
 
-/** RFC 4180 parser: the tracker's notes column holds commas, quotes and newlines. */
-function parseCsv(text: string): TrackerRow[] {
-  const records: string[][] = [];
-  let field = '';
-  let record: string[] = [];
-  let quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (quoted) {
-      if (c === '"' && text[i + 1] === '"') {
-        field += '"';
-        i++;
-      } else if (c === '"') {
-        quoted = false;
-      } else {
-        field += c;
-      }
-    } else if (c === '"') {
-      quoted = true;
-    } else if (c === ',') {
-      record.push(field);
-      field = '';
-    } else if (c === '\n' || c === '\r') {
-      if (c === '\r' && text[i + 1] === '\n') i++;
-      record.push(field);
-      records.push(record);
-      record = [];
-      field = '';
-    } else {
-      field += c;
-    }
+// ---------- Fetching ----------
+
+async function fetchText(url: string): Promise<string> {
+  const response = await fetch(url, { headers: REQUEST_HEADERS, signal: AbortSignal.timeout(20_000) });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
   }
-  if (field || record.length) records.push([...record, field]);
-  const [header, ...rows] = records.filter((r) => r.some((f) => f.trim()));
-  return rows.map((r) => Object.fromEntries(header.map((h, i) => [h, r[i] ?? ''])));
+
+  // An expired posting often redirects to the board's home page, which still returns 200.
+  const redirectedElsewhere = new URL(response.url).pathname !== new URL(url).pathname;
+  if (redirectedElsewhere) {
+    throw new Error('expired (redirected)');
+  }
+
+  return response.text();
 }
 
-const ENTITIES: Record<string, string> = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
-  mdash: '-', ndash: '-', hellip: '...', rarr: '->', larr: '<-', bull: '*', middot: '*',
-  rsquo: "'", lsquo: "'", rdquo: '"', ldquo: '"', times: 'x', copy: '(c)', reg: '(R)', trade: '(TM)', euro: 'EUR',
-};
+async function fetchFromLinkedIn(url: string): Promise<string> {
+  const jobId = url.match(/\d{8,}/)?.[0];
+  const page = await fetchText(`https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/${jobId}`);
 
-function decodeEntities(s: string): string {
-  return s.replace(/&(#x?[0-9a-f]+|\w+);/gi, (match, code: string) => {
-    if (code[0] === '#') {
-      const n = code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
-      return Number.isNaN(n) ? match : String.fromCodePoint(n);
-    }
-    return ENTITIES[code.toLowerCase()] ?? match;
+  // Keep only the description block; return nothing if LinkedIn served a page without one.
+  return convert(page, {
+    ...TEXT_OPTIONS,
+    baseElements: { selectors: ['.show-more-less-html__markup'], returnDomByDefault: false },
   });
 }
 
-function stripHtml(s: string): string {
-  return decodeEntities(
-    s
-      .replace(/<(script|style|noscript)[\s\S]*?<\/\1>/gi, ' ')
-      .replace(/<br\s*\/?>|<\/(p|li|h[1-6]|div)>/gi, '\n')
-      .replace(/<[^>]+>/g, ' '),
-  )
-    .replace(/[ \t]+/g, ' ')
-    .replace(/\n\s*\n+/g, '\n\n')
-    .trim();
+async function fetchFromAshby(url: string): Promise<string> {
+  // URL shape: jobs.ashbyhq.com/<board>/<job id>
+  const [, board, jobId] = new URL(url).pathname.split('/');
+  const body = await fetchText(`https://api.ashbyhq.com/posting-api/job-board/${board}`);
+
+  const jobs: { id: string; title: string; location: string; descriptionPlain: string }[] = JSON.parse(body).jobs;
+  const job = jobs.find((candidate) => candidate.id === jobId);
+  return job ? `${job.title}\n${job.location}\n\n${job.descriptionPlain}` : '';
 }
 
-async function get(url: string): Promise<string> {
-  const res = await fetch(url, { headers: HEADERS, signal: AbortSignal.timeout(20_000) });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  // Expired WWR and job-board postings 302 to a listing page that returns 200,
-  // so a redirect off the original path means the posting is gone.
-  if (res.redirected && new URL(res.url).pathname !== new URL(url).pathname) {
-    throw new Error(`expired (redirected to ${new URL(res.url).pathname})`);
-  }
-  return res.text();
+async function fetchFromGreenhouse(url: string): Promise<string> {
+  // URL shape: job-boards.greenhouse.io/<board>/jobs/<job id>
+  const [, board, , jobId] = new URL(url).pathname.split('/');
+  const body = await fetchText(`https://boards-api.greenhouse.io/v1/boards/${board}/jobs/${jobId}`);
+
+  const job: { title: string; location: { name: string }; content: string } = JSON.parse(body);
+  // Greenhouse escapes the HTML itself ("&lt;p&gt;"), so decode it before converting.
+  return `${job.title}\n${job.location.name}\n\n${convert(decode(job.content), TEXT_OPTIONS)}`;
 }
 
-async function getJson<T>(url: string): Promise<T> {
-  return JSON.parse(await get(url)) as T;
-}
+async function fetchFromLever(url: string): Promise<string> {
+  // URL shape: jobs.lever.co/<company>/<job id>
+  const [, company, jobId] = new URL(url).pathname.split('/');
+  const body = await fetchText(`https://api.lever.co/v0/postings/${company}/${jobId}`);
 
-async function linkedin(url: string): Promise<string> {
-  const id = url.match(/(\d{8,})/)?.[1];
-  const page = await get(`https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/${id}`);
-  const m = page.match(/class="show-more-less-html__markup[^"]*">([\s\S]*?)<\/div>/);
-  return m ? stripHtml(m[1]) : '';
-}
-
-async function ashby(url: string): Promise<string> {
-  const [, board, id] = url.match(/jobs\.ashbyhq\.com\/([^/]+)\/([0-9a-f-]{36})/) ?? [];
-  const data = await getJson<{ jobs: { id: string; title: string; location?: string; descriptionPlain?: string }[] }>(
-    `https://api.ashbyhq.com/posting-api/job-board/${board}`,
-  );
-  const job = data.jobs.find((j) => j.id === id);
-  return job ? `${job.title}\n${job.location ?? ''}\n\n${job.descriptionPlain ?? ''}` : '';
-}
-
-async function greenhouse(url: string): Promise<string> {
-  const [, board, id] = url.match(/greenhouse\.io\/([^/]+)\/jobs\/(\d+)/) ?? [];
-  const job = await getJson<{ title: string; location: { name: string }; content: string }>(
-    `https://boards-api.greenhouse.io/v1/boards/${board}/jobs/${id}`,
-  );
-  // Greenhouse double-encodes: the content field is entity-escaped HTML.
-  return `${job.title}\n${job.location.name}\n\n${stripHtml(decodeEntities(job.content))}`;
-}
-
-async function lever(url: string): Promise<string> {
-  const [, company, id] = url.match(/jobs\.lever\.co\/([^/]+)\/([0-9a-f-]{36})/) ?? [];
-  const job = await getJson<{
+  const job: {
     text: string;
-    descriptionPlain?: string;
-    additionalPlain?: string;
-    lists?: { text: string; content: string }[];
-  }>(`https://api.lever.co/v0/postings/${company}/${id}`);
-  const lists = (job.lists ?? []).map((l) => `${l.text}\n${stripHtml(l.content)}`).join('\n');
-  return `${job.text}\n\n${job.descriptionPlain ?? ''}\n${lists}\n${job.additionalPlain ?? ''}`;
+    descriptionPlain: string;
+    additionalPlain: string;
+    lists: { text: string; content: string }[];
+  } = JSON.parse(body);
+  const lists = job.lists.map((list) => `${list.text}\n${convert(list.content, TEXT_OPTIONS)}`).join('\n');
+  return `${job.text}\n\n${job.descriptionPlain}\n${lists}\n${job.additionalPlain}`;
 }
 
-function fetchPosting(url: string): Promise<string> {
-  if (url.includes('linkedin.com')) return linkedin(url);
-  if (url.includes('ashbyhq.com')) return ashby(url);
-  if (url.includes('greenhouse.io')) return greenhouse(url);
-  if (url.includes('lever.co')) return lever(url);
-  return get(url).then(stripHtml);
+async function fetchPosting(url: string): Promise<string> {
+  const host = new URL(url).hostname;
+
+  if (host.endsWith('linkedin.com')) return fetchFromLinkedIn(url);
+  if (host === 'jobs.ashbyhq.com') return fetchFromAshby(url);
+  if (host.endsWith('greenhouse.io')) return fetchFromGreenhouse(url);
+  if (host === 'jobs.lever.co') return fetchFromLever(url);
+
+  const page = await fetchText(url);
+  return convert(page, TEXT_OPTIONS);
 }
 
-function slug(row: TrackerRow): string {
-  return `${row.company}_${row.role}`
+// ---------- Saving ----------
+
+// Written by hand on purpose: the `slugify` library drops "/" and "-" without a
+// separator ("m/w/x" becomes "mwx"), which reads worse and would rename files
+// the golden labels already point to.
+function fileNameFor(row: TrackerRow): string {
+  const slug = `${row.company}_${row.role}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_|_$/g, '')
-    .slice(0, 70);
+    .replace(/^_|_$/g, '');
+  return `${slug.slice(0, 70)}.txt`;
+}
+
+async function collectRow(row: TrackerRow): Promise<ManifestEntry> {
+  const url = row.source_url.trim();
+  const entry: ManifestEntry = {
+    company: row.company,
+    role: row.role,
+    location: row.location,
+    status: row.status,
+    notes: row.notes,
+    url,
+    file: null,
+    result: 'no url',
+  };
+
+  if (!url.startsWith('http')) {
+    return entry;
+  }
+
+  try {
+    const text = (await fetchPosting(url)).trim();
+    if (text.length < MIN_POSTING_LENGTH) {
+      return { ...entry, result: `too short (${text.length} chars)` };
+    }
+
+    const file = fileNameFor(row);
+    writeFileSync(join(OUTPUT_DIR, file), `SOURCE: ${url}\n\n${text}\n`);
+    return { ...entry, file, result: 'ok' };
+  } catch (error) {
+    return { ...entry, result: `error: ${(error as Error).message}` };
+  }
 }
 
 async function main(): Promise<void> {
-  mkdirSync(OUT, { recursive: true });
-  const rows = parseCsv(readFileSync(TRACKER, 'utf8'));
-  const manifest: ManifestEntry[] = [];
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  const rows: TrackerRow[] = parse(readFileSync(TRACKER_PATH), { columns: true, skip_empty_lines: true });
 
-  // Sequential on purpose: LinkedIn's guest API rate-limits parallel bursts.
+  const manifest: ManifestEntry[] = [];
+  // One at a time on purpose: LinkedIn blocks bursts of parallel requests.
   for (const row of rows) {
-    const url = row.source_url.trim();
-    const entry: ManifestEntry = {
-      company: row.company,
-      role: row.role,
-      location: row.location,
-      status: row.status,
-      notes: row.notes,
-      url,
-      file: null,
-      result: 'no-url',
-    };
-    if (url.startsWith('http')) {
-      try {
-        const text = await fetchPosting(url);
-        if (text.length >= MIN_CHARS) {
-          const file = `${slug(row)}.txt`;
-          writeFileSync(join(OUT, file), `SOURCE: ${url}\n\n${text}\n`);
-          Object.assign(entry, { file, result: 'ok', chars: text.length });
-        } else {
-          entry.result = `too-short (${text.length} chars)`;
-        }
-      } catch (e) {
-        // Expired postings surface here as 404/410.
-        entry.result = `error: ${(e as Error).message}`.slice(0, 120);
-      }
-    }
+    const entry = await collectRow(row);
     manifest.push(entry);
-    console.error(`${entry.result.slice(0, 40).padEnd(40)} ${row.company.slice(0, 28)}`);
+    console.log(`${entry.result.slice(0, 40).padEnd(40)} ${row.company}`);
   }
 
-  writeFileSync(join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
-  const ok = manifest.filter((e) => e.result === 'ok').length;
-  console.log(`\n${ok} of ${manifest.length} postings saved to ${OUT}`);
+  writeFileSync(join(OUTPUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2));
+
+  const savedCount = manifest.filter((entry) => entry.result === 'ok').length;
+  console.log(`\nSaved ${savedCount} of ${rows.length} postings to ${OUTPUT_DIR}`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main();
