@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "golden:collect": "tsx scripts/collect-golden.ts",
     "golden:verify": "tsx scripts/verify-labels.ts",
-    "schema:check": "tsx scripts/check-schema.ts"
+    "schema:check": "tsx scripts/check-schema.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.117",
@@ -34,6 +35,7 @@
     "html-to-text": "^9.0.5",
     "tailwindcss": "^4",
     "tsx": "^4.23.13",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.11"
   }
 }
