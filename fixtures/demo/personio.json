@@ -11,7 +11,7 @@
   "relocationStated": false,
   "languageRequirement": null,
   "eligibility": {
-    "reason": "The posting is office-based in Berlin or Munich and says nothing about visa sponsorship or work permits.",
+    "reason": "The posting is silent on visa sponsorship or work authorization; role is office-based in Germany 2 days per week.",
     "verdict": "ask"
   },
   "mustHave": [
@@ -24,16 +24,20 @@
       "category": "tech"
     },
     {
-      "text": "Able to solve ambiguous or complex technical challenges independently",
+      "text": "Able to work through ambiguous or complex technical challenges independently",
       "category": "experience"
     },
     {
-      "text": "Strong written and spoken communication; collaboration with backend, product, design",
+      "text": "Strong written and spoken communication; work with backend, product, design",
       "category": "other"
     },
     {
       "text": "Comfortable owning a feature or problem area end to end",
-      "category": "leadership"
+      "category": "experience"
+    },
+    {
+      "text": "2 days per week in Berlin or Munich office",
+      "category": "other"
     }
   ],
   "niceToHave": [

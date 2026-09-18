@@ -3,18 +3,19 @@
   "company": "n8n",
   "seniority": "unspecified",
   "minYears": null,
-  "location": "Remote (Europe); Berlin centre of gravity",
+  "location": "Remote (Europe); posted in multiple locations",
   "remotePolicy": "remote-restricted",
   "allowedRegions": [
     "Europe",
-    "US"
+    "US",
+    "Germany"
   ],
   "sponsorshipStated": "yes",
   "sponsorshipEvidence": "We can sponsor visas to Germany; for any other country, you need to have existing right to work.",
   "relocationStated": false,
   "languageRequirement": null,
   "eligibility": {
-    "reason": "The company explicitly sponsors visas to Germany, so a candidate without EU/UK work rights could be hired if based in Germany.",
+    "reason": "The company sponsors visas to Germany, so a candidate without local work rights could be hired if based in Germany; elsewhere existing right to work is required.",
     "verdict": "yes"
   },
   "mustHave": [
@@ -27,15 +28,15 @@
       "category": "tech"
     },
     {
-      "text": "Strong TypeScript frontend expertise in a large, evolving codebase",
+      "text": "Strong TypeScript frontend expertise in large evolving codebases",
       "category": "tech"
     },
     {
-      "text": "Architectural ownership: owned frontend systems, led migrations or re-architected complex areas",
+      "text": "Architectural ownership: owned frontend systems, led migrations or re-architectures",
       "category": "experience"
     },
     {
-      "text": "Systems thinking mindset: trade-offs, correctness, platform contracts, maintainability",
+      "text": "Systems thinking mindset: trade-offs, platform contracts, maintainability",
       "category": "other"
     },
     {
@@ -53,7 +54,7 @@
       "category": "tech"
     },
     {
-      "text": "Plugin systems, extension architectures, micro-frontends, web worker orchestration",
+      "text": "Plugin systems, extension architectures, micro-frontends or web worker orchestration",
       "category": "tech"
     },
     {
@@ -74,7 +75,7 @@
     },
     {
       "text": "Built products across cloud, single-tenant or self-hosted environments",
-      "category": "domain"
+      "category": "experience"
     },
     {
       "text": "Observability mindset: instrumentation, debugging, rollout safety",
