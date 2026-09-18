@@ -1,0 +1,91 @@
+{
+  "title": "Frontend Platform Engineer",
+  "company": "n8n",
+  "seniority": "unspecified",
+  "minYears": null,
+  "location": "Remote (Europe); Berlin centre of gravity",
+  "remotePolicy": "remote-restricted",
+  "allowedRegions": [
+    "Europe",
+    "US"
+  ],
+  "sponsorshipStated": "yes",
+  "sponsorshipEvidence": "We can sponsor visas to Germany; for any other country, you need to have existing right to work.",
+  "relocationStated": false,
+  "languageRequirement": null,
+  "eligibility": {
+    "reason": "The company explicitly sponsors visas to Germany, so a candidate without EU/UK work rights could be hired if based in Germany.",
+    "verdict": "yes"
+  },
+  "mustHave": [
+    {
+      "text": "Built architecture-heavy frontend products such as canvas-based tools, real-time apps, or collaborative editors",
+      "category": "experience"
+    },
+    {
+      "text": "Can measure, debug and improve runtime performance in large frontend applications",
+      "category": "tech"
+    },
+    {
+      "text": "Strong TypeScript frontend expertise in a large, evolving codebase",
+      "category": "tech"
+    },
+    {
+      "text": "Architectural ownership: owned frontend systems, led migrations or re-architected complex areas",
+      "category": "experience"
+    },
+    {
+      "text": "Systems thinking mindset: trade-offs, correctness, platform contracts, maintainability",
+      "category": "other"
+    },
+    {
+      "text": "Clear communication and cross-functional collaboration",
+      "category": "other"
+    },
+    {
+      "text": "Pragmatic engineering: refactoring, modularization, tech debt reduction",
+      "category": "other"
+    }
+  ],
+  "niceToHave": [
+    {
+      "text": "Experience with CRDTs, multiplayer systems or real-time communication layers",
+      "category": "tech"
+    },
+    {
+      "text": "Plugin systems, extension architectures, micro-frontends, web worker orchestration",
+      "category": "tech"
+    },
+    {
+      "text": "Vue experience",
+      "category": "tech"
+    },
+    {
+      "text": "Open-source contribution or maintenance experience",
+      "category": "experience"
+    },
+    {
+      "text": "Worked on workflow engines, developer tools or infrastructure-adjacent SaaS",
+      "category": "domain"
+    },
+    {
+      "text": "Large-scale SaaS exposure",
+      "category": "experience"
+    },
+    {
+      "text": "Built products across cloud, single-tenant or self-hosted environments",
+      "category": "domain"
+    },
+    {
+      "text": "Observability mindset: instrumentation, debugging, rollout safety",
+      "category": "tech"
+    }
+  ],
+  "stack": [
+    "TypeScript",
+    "Vue",
+    "WebSockets",
+    "CRDTs",
+    "web workers"
+  ]
+}

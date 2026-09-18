@@ -11,7 +11,8 @@
     "golden:collect": "tsx scripts/collect-golden.ts",
     "golden:verify": "tsx scripts/verify-labels.ts",
     "schema:check": "tsx scripts/check-schema.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "demo:record": "tsx scripts/build-demo-fixtures.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.117",

@@ -7,19 +7,11 @@
  */
 import { experimental_useObject as useObject } from '@ai-sdk/react';
 import { useState } from 'react';
+import { readableError } from '@/lib/readable-error';
 import { postingSchema } from '@/lib/schema';
 import { PostingResult } from './posting-result';
 
 const API_KEY_STORAGE = 'postmatch:anthropic-api-key';
-
-// The route answers errors as JSON { "error": "..." }; useObject hands us that raw text.
-function readableError(error: Error): string {
-  try {
-    return JSON.parse(error.message).error ?? error.message;
-  } catch {
-    return error.message;
-  }
-}
 
 function loadSavedKey(): string {
   try {

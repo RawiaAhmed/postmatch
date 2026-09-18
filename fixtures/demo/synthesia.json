@@ -1,0 +1,106 @@
+{
+  "title": "Senior Frontend Engineer, Marketing Website",
+  "company": "Synthesia",
+  "seniority": "senior",
+  "minYears": 5,
+  "location": "London",
+  "remotePolicy": "remote-restricted",
+  "allowedRegions": [
+    "London, UK",
+    "Europe"
+  ],
+  "sponsorshipStated": "no",
+  "sponsorshipEvidence": "We can also accommodate remote workers elsewhere in Europe subject to compliance and right to work checks.",
+  "relocationStated": false,
+  "languageRequirement": null,
+  "eligibility": {
+    "reason": "Role requires being in London or elsewhere in Europe with right-to-work checks, employed via OysterHR; no sponsorship offered.",
+    "verdict": "no"
+  },
+  "mustHave": [
+    {
+      "text": "At least 5 years as software engineer, incl. 3 at senior level on content-driven/marketing front end",
+      "category": "experience"
+    },
+    {
+      "text": "Real ownership of a content model in Sanity; GROQ and Portable Text familiar",
+      "category": "tech"
+    },
+    {
+      "text": "Expert HTML, CSS and TypeScript; component API design",
+      "category": "tech"
+    },
+    {
+      "text": "End-to-end: SSR, serverless and edge runtimes, API routes, SQL database, secrets, CI",
+      "category": "tech"
+    },
+    {
+      "text": "Responsive design, cross-browser, web performance, WCAG 2.2 AA",
+      "category": "tech"
+    },
+    {
+      "text": "Accountable to performance, SEO, analytics and conversion metrics",
+      "category": "domain"
+    },
+    {
+      "text": "Strong sense of craft and attention to detail",
+      "category": "other"
+    },
+    {
+      "text": "Strong communication and collaboration skills",
+      "category": "leadership"
+    }
+  ],
+  "niceToHave": [
+    {
+      "text": "Prior experience on a large SaaS marketing website",
+      "category": "experience"
+    },
+    {
+      "text": "Astro or another islands/static-site framework",
+      "category": "tech"
+    },
+    {
+      "text": "Cloudflare Workers or another edge/serverless platform",
+      "category": "tech"
+    },
+    {
+      "text": "Experience with AWS Lambda",
+      "category": "tech"
+    },
+    {
+      "text": "Tailwind CSS v4 and token-based design systems",
+      "category": "tech"
+    },
+    {
+      "text": "Making component libraries and content models consumable by AI agents",
+      "category": "ai"
+    },
+    {
+      "text": "Strong design sensibility",
+      "category": "other"
+    },
+    {
+      "text": "Localisation and internationalisation at scale",
+      "category": "domain"
+    },
+    {
+      "text": "Analytics and tag management implementation",
+      "category": "tech"
+    }
+  ],
+  "stack": [
+    "Astro",
+    "Sanity",
+    "GROQ",
+    "Portable Text",
+    "HTML",
+    "CSS",
+    "TypeScript",
+    "Figma",
+    "Cloudflare Workers",
+    "AWS Lambda",
+    "Tailwind CSS v4",
+    "SQL"
+  ]
+}

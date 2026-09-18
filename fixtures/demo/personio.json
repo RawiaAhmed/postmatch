@@ -1,0 +1,49 @@
+{
+  "title": "Senior Frontend Engineer (d/f/m)",
+  "company": "Personio",
+  "seniority": "senior",
+  "minYears": null,
+  "location": "Berlin or Munich",
+  "remotePolicy": "hybrid",
+  "allowedRegions": [],
+  "sponsorshipStated": "not-mentioned",
+  "sponsorshipEvidence": null,
+  "relocationStated": false,
+  "languageRequirement": null,
+  "eligibility": {
+    "reason": "The posting is office-based in Berlin or Munich and says nothing about visa sponsorship or work permits.",
+    "verdict": "ask"
+  },
+  "mustHave": [
+    {
+      "text": "Strong experience with React and TypeScript, shipping production frontend features",
+      "category": "tech"
+    },
+    {
+      "text": "Comfortable with testing strategies across the testing pyramid",
+      "category": "tech"
+    },
+    {
+      "text": "Able to solve ambiguous or complex technical challenges independently",
+      "category": "experience"
+    },
+    {
+      "text": "Strong written and spoken communication; collaboration with backend, product, design",
+      "category": "other"
+    },
+    {
+      "text": "Comfortable owning a feature or problem area end to end",
+      "category": "leadership"
+    }
+  ],
+  "niceToHave": [
+    {
+      "text": "Interest or prior experience in payroll, compensation, fintech or regulated domains",
+      "category": "domain"
+    }
+  ],
+  "stack": [
+    "React",
+    "TypeScript"
+  ]
+}

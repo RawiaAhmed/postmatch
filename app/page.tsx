@@ -1,3 +1,4 @@
+import { DemoPicker } from '@/components/demo-picker';
 import { PostingAnalyzer } from '@/components/posting-analyzer';
 
 export default function Home() {
@@ -10,6 +11,8 @@ export default function Home() {
         </p>
       </header>
       <PostingAnalyzer />
+      <hr className="border-zinc-200 dark:border-zinc-800" />
+      <DemoPicker />
     </main>
   );
 }
