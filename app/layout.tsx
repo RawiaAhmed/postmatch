@@ -13,8 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://postmatch.rawia.dev"),
   title: "postmatch",
-  description: "Job posting analyser: requirements, sponsorship and eligibility as structured facts.",
+  description: "Paste a job posting. Get its requirements, sponsorship and eligibility as structured facts, streamed live.",
+  openGraph: {
+    title: "postmatch",
+    description: "Paste a job posting. Get its requirements, sponsorship and eligibility as structured facts, streamed live.",
+    url: "https://postmatch.rawia.dev",
+    siteName: "postmatch",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "postmatch",
+    description: "Paste a job posting. Get its requirements, sponsorship and eligibility as structured facts, streamed live.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
