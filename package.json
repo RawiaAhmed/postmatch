@@ -15,15 +15,18 @@
     "demo:record": "tsx scripts/build-demo-fixtures.ts",
     "cv:index": "tsx scripts/build-cv-index.ts",
     "cv:import": "tsx scripts/import-cv.ts",
-    "sponsors:build": "tsx scripts/build-sponsor-index.ts"
+    "sponsors:build": "tsx scripts/build-sponsor-index.ts",
+    "eval": "tsx evals/run.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.117",
     "@ai-sdk/react": "^3.0.283",
     "@huggingface/transformers": "^4.3.0",
     "ai": "^6.0.280",
+    "dotenv": "^18.0.1",
     "marked": "^18.0.13",
     "next": "16.3.5",
+    "p-limit": "^7.3.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "zod": "^4.6.2"

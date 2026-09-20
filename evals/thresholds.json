@@ -1,0 +1,6 @@
+{
+  "comment": "Floors the committed eval results must clear. Raise them when a run beats them; never lower one to make a build pass.",
+  "overall": 0.85,
+  "quoteFaithfulness": 1.0,
+  "postings": 20
+}

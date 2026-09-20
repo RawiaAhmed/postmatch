@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+      - run: npm run typecheck
+
+      # Guards the schema against constraints Claude structured outputs reject.
+      - run: npm run schema:check
+
+      # Unit tests, plus the eval gate: the committed accuracy must clear the
+      # thresholds and must have been measured with the prompt and model in this
+      # commit. The evals themselves run locally, because the posting texts are
+      # third-party content and are not in this repository.
+      - run: npm test
+
+      - run: npm run build

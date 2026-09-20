@@ -1,0 +1,1122 @@
+{
+  "model": "claude-opus-5",
+  "promptHash": "907c377aa8955564",
+  "ranAt": "2026-09-20T22:48:31.428Z",
+  "accuracy": {
+    "overall": 0.9,
+    "byField": {
+      "seniority": 0.85,
+      "minYears": 0.95,
+      "remotePolicy": 0.85,
+      "allowedRegions": 0.95,
+      "sponsorshipStated": 0.95,
+      "relocationStated": 0.95,
+      "languageRequirement": 0.9,
+      "eligible": 0.8
+    },
+    "quoteFaithfulness": 1,
+    "postings": 20
+  },
+  "results": [
+    {
+      "file": "n8n_senior_frontend_platform_engineer.txt",
+      "company": "n8n",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": false,
+          "expected": "senior",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote-restricted",
+          "actual": "remote-restricted"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": false,
+          "expected": "Europe",
+          "actual": "Europe, US"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    },
+    {
+      "file": "adjoe_senior_frontend_developer_f_m_d_dashboards_team.txt",
+      "company": "adjoe",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "4",
+          "actual": "4"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": false,
+          "expected": "unspecified",
+          "actual": "onsite"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "true",
+          "actual": "true"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": false,
+          "expected": "yes",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "wallapop_engineering_manager_content_discovery_buyer_tribe.txt",
+      "company": "Wallapop",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "manager",
+          "actual": "manager"
+        },
+        {
+          "field": "minYears",
+          "passed": false,
+          "expected": "null",
+          "actual": "2"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "true",
+          "actual": "true"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    },
+    {
+      "file": "aurora_energy_research_senior_software_engineer.txt",
+      "company": "Aurora Energy Research",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    },
+    {
+      "file": "raiffeisen_bank_international_senior_frontend_developer_angular_f_m_x.txt",
+      "company": "Raiffeisen Bank International",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": false,
+          "expected": "senior",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    },
+    {
+      "file": "helsing_software_engineer_frontend_autonomous_air_system_v_v.txt",
+      "company": "Helsing",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "true",
+          "actual": "true"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "ask",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "personio_senior_frontend_engineer_d_f_m_money_team.txt",
+      "company": "Personio",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "ask",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "amboss_senior_frontend_engineer_educator_course_experience.txt",
+      "company": "AMBOSS",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "ask",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "celonis_sr_frontend_engineer_process_modeling_team_prisma.txt",
+      "company": "Celonis",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "5",
+          "actual": "5"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": false,
+          "expected": "ask",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "ebay_senior_staff_frontend_engineer_d_f_m.txt",
+      "company": "eBay",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "staff",
+          "actual": "staff"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "ask",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "synthesia_senior_frontend_engineer_marketing_website.txt",
+      "company": "Synthesia",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "5",
+          "actual": "5"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote-restricted",
+          "actual": "remote-restricted"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "UK, Europe",
+          "actual": "UK, Europe"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": false,
+          "expected": "not-mentioned",
+          "actual": "no"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "no",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "wayflyer_frontend_software_engineer.txt",
+      "company": "Wayflyer",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "5",
+          "actual": "5"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote-restricted",
+          "actual": "remote-restricted"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "Europe",
+          "actual": "Europe"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "no",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "k_tronik_gmbh_frontend_developer_m_w_x.txt",
+      "company": "K-tronik GmbH",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": false,
+          "expected": "false",
+          "actual": "true"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": false,
+          "expected": "German (very good, written and spoken)",
+          "actual": "German: very good (sehr gute Deutschkenntnisse in Wort und Schrift)"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "no",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "cropx_frontend_team_lead.txt",
+      "company": "CropX",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "lead",
+          "actual": "lead"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": false,
+          "expected": "Dutch (implied: posting written entirely in Dutch for a domestic-market team)",
+          "actual": "Dutch (posting written entirely in Dutch)"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "no",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "redcare_pharmacy_senior_frontend_engineer_retail_media_adtech_m_f_d.txt",
+      "company": "Redcare Pharmacy",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote-restricted",
+          "actual": "remote-restricted"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "Germany",
+          "actual": "Germany"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "no",
+          "actual": "no"
+        }
+      ]
+    },
+    {
+      "file": "transitionzero_frontend_software_engineer_scenario_builder_interface_t.txt",
+      "company": "TransitionZero",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": false,
+          "expected": "senior",
+          "actual": "lead"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "7",
+          "actual": "7"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "hybrid",
+          "actual": "hybrid"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "ask",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "supabase_frontend_engineer.txt",
+      "company": "Supabase",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "unspecified",
+          "actual": "unspecified"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote",
+          "actual": "remote"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": false,
+          "expected": "yes",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "cosuno_principal_full_stack_developer_typescript.txt",
+      "company": "Cosuno",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "principal",
+          "actual": "principal"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "10",
+          "actual": "10"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": true,
+          "expected": "remote",
+          "actual": "remote"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": false,
+          "expected": "yes",
+          "actual": "ask"
+        }
+      ]
+    },
+    {
+      "file": "presight_g42_principal_frontend_engineer_data_intelligence_platform.txt",
+      "company": "Presight (G42)",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "principal",
+          "actual": "principal"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "10",
+          "actual": "10"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": false,
+          "expected": "unspecified",
+          "actual": "onsite"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "not-mentioned",
+          "actual": "not-mentioned"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "false",
+          "actual": "false"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    },
+    {
+      "file": "hennge_senior_frontend_engineer_tadrill_cybersecurity_edition.txt",
+      "company": "HENNGE",
+      "quoteFaithful": true,
+      "fields": [
+        {
+          "field": "seniority",
+          "passed": true,
+          "expected": "senior",
+          "actual": "senior"
+        },
+        {
+          "field": "minYears",
+          "passed": true,
+          "expected": "3",
+          "actual": "3"
+        },
+        {
+          "field": "remotePolicy",
+          "passed": false,
+          "expected": "unspecified",
+          "actual": "onsite"
+        },
+        {
+          "field": "allowedRegions",
+          "passed": true,
+          "expected": "(none)",
+          "actual": "(none)"
+        },
+        {
+          "field": "sponsorshipStated",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        },
+        {
+          "field": "relocationStated",
+          "passed": true,
+          "expected": "true",
+          "actual": "true"
+        },
+        {
+          "field": "languageRequirement",
+          "passed": true,
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "field": "eligible",
+          "passed": true,
+          "expected": "yes",
+          "actual": "yes"
+        }
+      ]
+    }
+  ]
+}

@@ -13,7 +13,7 @@ import { postingSchema } from './schema';
 // them if you switch.
 export const EXTRACTION_MODEL = 'claude-opus-5';
 
-const SYSTEM_PROMPT = `You extract facts from a single job posting for a candidate who lives outside the EU and the UK and has no local work rights.
+export const SYSTEM_PROMPT = `You extract facts from a single job posting for a candidate who lives outside the EU and the UK and has no local work rights.
 
 Rules:
 - Use only what the posting says. When it is silent, use null, an empty list, 'unspecified' or 'not-mentioned'. Never guess.
