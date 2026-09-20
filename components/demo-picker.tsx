@@ -7,7 +7,7 @@ import { experimental_useObject as useObject } from '@ai-sdk/react';
 import { DEMO_POSTINGS, type DemoId } from '@/lib/demo-postings';
 import { readableError } from '@/lib/readable-error';
 import { postingSchema } from '@/lib/schema';
-import { requirementTexts } from '@/lib/match-requirements';
+import { requirementGroups } from '@/lib/match-requirements';
 import { PostingResult } from './posting-result';
 import { CvMatch } from './cv-match';
 
@@ -48,10 +48,11 @@ export function DemoPicker() {
         </p>
       )}
 
+      {/* The percentage first: the extracted facts below are the working behind it. */}
+      {object && !isLoading && <CvMatch groups={requirementGroups(object)} />}
+
       {object && <PostingResult posting={object} />}
 
-      {/* Only once the posting has finished streaming: matching partial requirements would rerun on every token. */}
-      {object && !isLoading && <CvMatch requirements={requirementTexts(object)} />}
     </section>
   );
 }

@@ -17,6 +17,12 @@ export type RequirementMatch = {
   evidence: Evidence[];
 };
 
+/** A posting's requirements, kept apart because a required one weighs more. */
+export type RequirementGroups<T> = {
+  mustHave: T[];
+  niceToHave: T[];
+};
+
 let index: Promise<CvIndex> | undefined;
 
 /** Fetched once per page load; the browser caches the file after that. */
@@ -41,24 +47,35 @@ export function loadCvIndex(): Promise<CvIndex> {
   return index;
 }
 
-export async function matchRequirements(requirements: string[]): Promise<RequirementMatch[]> {
-  const [cvIndex, vectors] = await Promise.all([loadCvIndex(), embed(requirements)]);
+export async function matchRequirements(
+  groups: RequirementGroups<string>,
+): Promise<RequirementGroups<RequirementMatch>> {
+  // One batch for both groups: the model is much faster that way than called twice.
+  const all = [...groups.mustHave, ...groups.niceToHave];
+  const [cvIndex, vectors] = await Promise.all([loadCvIndex(), embed(all)]);
 
-  return requirements.map((requirement, position) => ({
+  const matched = all.map((requirement, position) => ({
     requirement,
     evidence: findEvidence(vectors[position], cvIndex),
   }));
+
+  return {
+    mustHave: matched.slice(0, groups.mustHave.length),
+    niceToHave: matched.slice(groups.mustHave.length),
+  };
 }
 
 /**
- * Every requirement of a posting, required and preferred together, in one list.
- * Fields can still be missing while the posting streams, and the same wording
- * sometimes appears in both lists, so both are handled here.
+ * A posting's requirements, ready to match. Fields can still be missing while
+ * the posting streams, and the same wording sometimes appears in both lists, so
+ * duplicates are dropped and a repeat is kept as a must-have.
  */
-export function requirementTexts(posting: DeepPartial<Posting>): string[] {
-  const texts = [...(posting.mustHave ?? []), ...(posting.niceToHave ?? [])]
-    .map((requirement) => requirement?.text)
-    .filter((text): text is string => Boolean(text));
+export function requirementGroups(posting: DeepPartial<Posting>): RequirementGroups<string> {
+  const textsOf = (requirements: DeepPartial<Posting>['mustHave']): string[] =>
+    (requirements ?? []).map((requirement) => requirement?.text).filter((text): text is string => Boolean(text));
 
-  return [...new Set(texts)];
+  const mustHave = [...new Set(textsOf(posting.mustHave))];
+  const niceToHave = [...new Set(textsOf(posting.niceToHave))].filter((text) => !mustHave.includes(text));
+
+  return { mustHave, niceToHave };
 }

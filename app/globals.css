@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+ * Tailwind's reset removed the pointer cursor browsers give buttons, so put it
+ * back once here rather than adding a class to every clickable element.
+ * Disabled controls keep their own cursor: the shape is the only hint a mouse
+ * user gets that the click will do nothing.
+ */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+label[for],
+summary,
+select:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
