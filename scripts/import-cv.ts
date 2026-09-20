@@ -65,9 +65,11 @@ function toMarkdown(text: string): string {
       flush();
       out.push('', `## ${line.trim()}`);
     } else if (/^[A-Za-z][\w.\- ]*: /.test(line)) {
-      // A "Label: ..." line (skills group, project entry) starts a new item.
+      // A "Label: ..." line (a skills group, a project). Written as a bullet so
+      // each one becomes its own chunk: as a plain paragraph, markdown would
+      // merge the whole skills section into a single unsearchable block.
       flush();
-      paragraph.push(line.trim());
+      paragraph.push(`- ${line.trim()}`);
     } else {
       // Anything else continues the line above: the PDF wraps long sentences.
       paragraph.push(line.trim());

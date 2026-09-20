@@ -7,7 +7,7 @@ El-Gouna, Egypt. rawia.dev | linkedin.com/in/rawia-ahmed-3b372733 | Arabic (nati
 ## Summary
 
 Hands-on Technical Team Lead and Senior Frontend Engineer with 13 years of experience delivering scalable, high-performance enterprise applications in Angular and TypeScript, including a retail media platform of around 250,000
-lines across 247 components. Sets the team standard for AI-assisted development: authored the written rules governing what generated code and tests must satisfy, and reviews generated output with the same rigour applied to any pull request. Leads and mentors a cross-functional team of 8 to 10 engineers, owning the full delivery lifecycle from PRD review and technical architecture through code review, testing, and production deployment, with a zero QA rejection rate sustained since 2022. Strong background in enterprise B2B platform modernisation, monorepo consolidation, CI/CD, and cloud migration. Open to senior engineering and tech lead roles, either fully remote or with relocation, bringing long-term cross-border remote collaboration experience and C1 English.
+- lines across 247 components. Sets the team standard for AI-assisted development: authored the written rules governing what generated code and tests must satisfy, and reviews generated output with the same rigour applied to any pull request. Leads and mentors a cross-functional team of 8 to 10 engineers, owning the full delivery lifecycle from PRD review and technical architecture through code review, testing, and production deployment, with a zero QA rejection rate sustained since 2022. Strong background in enterprise B2B platform modernisation, monorepo consolidation, CI/CD, and cloud migration. Open to senior engineering and tech lead roles, either fully remote or with relocation, bringing long-term cross-border remote collaboration experience and C1 English.
 
 ## Work Experience
 ### Technical Team Lead, Front-End Focused (07/2022 - 08/2026)
@@ -45,20 +45,20 @@ Youxel Technology | Cairo, Egypt
 - Developed responsive web applications, collaborating across the full product lifecycle.
 
 ## Technical Skills
-Frontend: JavaScript (ES6+), TypeScript, Angular (Signals, standalone components, Angular Material, CDK), React, Redux, NextJS, HTML5, CSS3, Sass/SCSS, RxJS, Web Components, Bootstrap, Tailwind CSS
-AI-Assisted Development: team standards for AI-assisted delivery, review of AI-generated code, generated-test quality gates, agentic development workflows, Cursor, Claude Code, Figma MCP, prompt engineering, LLM streaming interfaces (SSE)
-Architecture: Angular monorepo, Nx, design systems, shared component libraries, OpenAPI contract-first client generation, role-based access control, feature flags, single-page applications (SPA), responsive and cross-browser development, performance optimisation (lazy loading, bundle size reduction, OnPush change detection)
-Backend and Cloud: NodeJS (REST APIs, BFF, NestJS), AWS, Azure, Serverless, Azure DevOps CI/CD, Azure AD (MSAL, OAuth2/OIDC), Azure Blob Storage
-Testing and Tooling: Jest, Karma, Jasmine, Cypress (E2E), ESLint, Prettier, Husky, lint-staged, conventional commits, semantic versioning, code review, Git, Storybook, Figma
+- Frontend: JavaScript (ES6+), TypeScript, Angular (Signals, standalone components, Angular Material, CDK), React, Redux, NextJS, HTML5, CSS3, Sass/SCSS, RxJS, Web Components, Bootstrap, Tailwind CSS
+- AI-Assisted Development: team standards for AI-assisted delivery, review of AI-generated code, generated-test quality gates, agentic development workflows, Cursor, Claude Code, Figma MCP, prompt engineering, LLM streaming interfaces (SSE)
+- Architecture: Angular monorepo, Nx, design systems, shared component libraries, OpenAPI contract-first client generation, role-based access control, feature flags, single-page applications (SPA), responsive and cross-browser development, performance optimisation (lazy loading, bundle size reduction, OnPush change detection)
+- Backend and Cloud: NodeJS (REST APIs, BFF, NestJS), AWS, Azure, Serverless, Azure DevOps CI/CD, Azure AD (MSAL, OAuth2/OIDC), Azure Blob Storage
+- Testing and Tooling: Jest, Karma, Jasmine, Cypress (E2E), ESLint, Prettier, Husky, lint-staged, conventional commits, semantic versioning, code review, Git, Storybook, Figma
 
 ## Leadership and Personal Skills
 Team leadership and people management; mentoring and coaching; performance reviews and career development; hiring and interviewing; Agile and Scrum delivery; prioritisation under competing deadlines; problem solving and ownership; remote and distributed team coordination.
 
 ## Open Source and Personal Projects
-postmatch: Next.js and TypeScript app that streams typed facts out of a job posting with the Vercel AI SDK and Claude, quoting the sponsorship evidence it relies on, plus a demo mode needing no API key. postmatch.rawia.dev | github.com/RawiaAhmed/postmatch
-ngx-generic-combobox: published Angular 22 library on npm, MIT licensed, zero runtime dependencies. Editable combobox implementing the full WAI-ARIA 1.2 pattern, with virtual focus via aria-activedescendant rather than roving tabindex. npmjs.com/package/ngx-generic-combobox | github.com/RawiaAhmed/ngx-generic-combobox
-fleet-assistant: Angular 22 front end over a NestJS backend-for-frontend streaming LLM output over server-sent events, with explicit connecting and streaming states, retained partial answers, and bounded retry. github.com/RawiaAhmed/fleet-assistant
-rawia.dev: personal site, React 18 with TypeScript and Tailwind, MIT licensed. github.com/RawiaAhmed/portfolio
+- postmatch: Next.js and TypeScript app that streams typed facts out of a job posting with the Vercel AI SDK and Claude, quoting the sponsorship evidence it relies on, plus a demo mode needing no API key. postmatch.rawia.dev | github.com/RawiaAhmed/postmatch
+- ngx-generic-combobox: published Angular 22 library on npm, MIT licensed, zero runtime dependencies. Editable combobox implementing the full WAI-ARIA 1.2 pattern, with virtual focus via aria-activedescendant rather than roving tabindex. npmjs.com/package/ngx-generic-combobox | github.com/RawiaAhmed/ngx-generic-combobox
+- fleet-assistant: Angular 22 front end over a NestJS backend-for-frontend streaming LLM output over server-sent events, with explicit connecting and streaming states, retained partial answers, and bounded retry. github.com/RawiaAhmed/fleet-assistant
+- rawia.dev: personal site, React 18 with TypeScript and Tailwind, MIT licensed. github.com/RawiaAhmed/portfolio
 
 ## Education
 ### Bachelor's Degree in Computer Engineering (09/2008 - 07/2013)
