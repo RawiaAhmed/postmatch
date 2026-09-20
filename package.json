@@ -14,7 +14,8 @@
     "test": "vitest run",
     "demo:record": "tsx scripts/build-demo-fixtures.ts",
     "cv:index": "tsx scripts/build-cv-index.ts",
-    "cv:import": "tsx scripts/import-cv.ts"
+    "cv:import": "tsx scripts/import-cv.ts",
+    "sponsors:build": "tsx scripts/build-sponsor-index.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.117",

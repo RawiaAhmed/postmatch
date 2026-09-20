@@ -12,6 +12,7 @@ import { postingSchema } from '@/lib/schema';
 import { requirementGroups } from '@/lib/match-requirements';
 import { PostingResult } from './posting-result';
 import { CvMatch } from './cv-match';
+import { SponsorCheck } from './sponsor-check';
 
 const API_KEY_STORAGE = 'postmatch:anthropic-api-key';
 
@@ -114,6 +115,8 @@ export function PostingAnalyzer() {
 
       {/* The percentage first: the extracted facts below are the working behind it. */}
       {object && !isLoading && <CvMatch groups={requirementGroups(object)} />}
+
+      {object && !isLoading && <SponsorCheck company={object.company ?? null} location={object.location ?? null} />}
 
       {object && <PostingResult posting={object} />}
 

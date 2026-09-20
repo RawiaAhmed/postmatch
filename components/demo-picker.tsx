@@ -10,6 +10,7 @@ import { postingSchema } from '@/lib/schema';
 import { requirementGroups } from '@/lib/match-requirements';
 import { PostingResult } from './posting-result';
 import { CvMatch } from './cv-match';
+import { SponsorCheck } from './sponsor-check';
 
 export function DemoPicker() {
   const { object, submit, isLoading, error } = useObject({
@@ -50,6 +51,8 @@ export function DemoPicker() {
 
       {/* The percentage first: the extracted facts below are the working behind it. */}
       {object && !isLoading && <CvMatch groups={requirementGroups(object)} />}
+
+      {object && !isLoading && <SponsorCheck company={object.company ?? null} location={object.location ?? null} />}
 
       {object && <PostingResult posting={object} />}
 
