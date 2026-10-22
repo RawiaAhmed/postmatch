@@ -17,7 +17,7 @@ const HEADER = `# Rawia Ahmed
 
 Technical Team Lead | Senior Frontend Engineer (Angular, React) | AI-Assisted Delivery
 
-El-Gouna, Egypt. rawia.dev | linkedin.com/in/rawia-ahmed-3b372733 | Arabic (native), English (C1)
+El-Gouna, Egypt. rawia.dev | linkedin.com/in/rawia-ahmed | Arabic (native), English (C1)
 
 ## Summary
 `;
